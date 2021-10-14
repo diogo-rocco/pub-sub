@@ -9,15 +9,17 @@ class ClientAccess():
     def __init__(self) -> None:
         self.conn = rpyc.connect(SERVER, PORTA)
 
-    
+    #Função responsavel por obter a lista de tópicos que já foram criados
     def get_topic_list(self):
         return self.conn.root.get_topic_list()
 
 
+    #Função responsavel por adicionar um novo tópico a lista de tópicos existentes
     def add_topic(self, topic):
         self.conn.root.add_topic(topic)
 
 
+    #Função responsavel por remover um tópico a lista de tópicos existentes
     def remove_topic(self, topic):
         self.conn.root.remove_topic(topic)
 
@@ -33,6 +35,7 @@ class ClientAccess():
         
         return user
     
+    #Função responsável por remover um usuário da lista de usuários
     def remove_user(self, user):
         fail = self.conn.root.set_user(user)
         if fail:
